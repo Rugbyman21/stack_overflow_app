@@ -7,25 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <%= link_to "Home", page_home_path %>
-
-  <% if user_signed_in? %>
-
-    <%= link_to "Sign_out", destroy_user_session_path, method: :delete %>
-
-  <% else %>
-
-    <%= link_to "Sign_in", new_user_session_path %>
-    <%= link_to "Sign_up", new_user_registration_path %>
-
-  <% end %>
-
-
-
-
-
-
+  <%= render 'layouts/navbar' %>
 
 
   <p class="notice"><%= notice %></p>
