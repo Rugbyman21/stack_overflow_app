@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'rails'
 gem 'pg'
-
+gem 'acts_as_votable'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
