@@ -10,7 +10,7 @@
             <div class = "thumbnail thumb-box">
               <div class="caption" style="test-align:center;">
 
-                <li><%= link_to question.statement, question_path(question) %></li>
+                <%= link_to question.statement, question_path(question) %>
 
                 <%= link_to like_question_path(question), class: "like", method: :put do %>
                   <button type= "button" class="btn btn-success" aria-label="Left Align">
