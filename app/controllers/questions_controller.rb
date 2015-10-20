@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:upvote, :downvote]
   def index
-    @questions = Question.all.order(:cached_votes_up => :desc)
+    @questions = Question.all.order(:cached_votes_score => :desc)
     render :index
   end
 
