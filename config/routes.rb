@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  resources :question do
+    member do
+      put "like" => "questions#upvote"
+      put "unlike" => "questions#downvote"
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: [:upvote, :downvote]
   def index
     @questions = Question.all
     render :index
@@ -44,9 +45,23 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
   end
 
+  def upvote
+    @question.upvote_from current_user
+    redirect_to questions_path
+  end
+
+  def downvote
+    @question.downvote_from current_user
+    redirect_to questions_path
+  end
+
 
 
   private
+
+  def set_question
+    @question = Question.find(params[:id])
+  end
 
   def question_params
     params.require(:question).permit(:statement, :content)

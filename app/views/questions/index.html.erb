@@ -3,10 +3,38 @@
     <h1>Questions</h1>
     <div class ="col-md-10 nopadding">
       <ul id = "questions_list_ul">
+
         <% @questions.each do |question| %>
-        <li><%= link_to question.statement, question_path(question) %></li>
+
+
+            <div class = "thumbnail thumb-box">
+              <div class="caption" style="test-align:center;">
+
+                <li><%= link_to question.statement, question_path(question) %></li>
+
+                <%= link_to like_question_path(question), class: "like", method: :put do %>
+                  <button type= "button" class="btn btn-success" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden="true"></span>
+                    <span class="badge"><%= question.get_upvotes.size %></span>
+                  </button>
+                  <% end %>
+
+                <%= link_to unlike_question_path(question), class: "unlike", method: :put do %>
+                  <button type= "button" class="btn btn-danger" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-thumbs-down glyphicon-align-center" aria-hidden="true"></span>
+                    <span class="badge"><%= question.get_downvotes.size %></span>
+                  </button>
+                  <% end %>
+
+
+              </div>
+            </div>
+
+
         <% end %>
+
       </ul>
+
       <%= link_to "Add New Question", new_question_path %>
     </div>
 </div>
