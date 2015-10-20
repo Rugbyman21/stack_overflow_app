@@ -1,0 +1,29 @@
+<h1> <%= @question.statement %></h1>
+
+
+<p><%= link_to "Edit", edit_question_path(@question) %></p>
+
+
+
+
+
+
+<%= link_to "New Answer", new_question_answer_path(@question)%>
+
+<p>
+  <%= link_to "Return Home", questions_path %>
+</p>
+
+<div class="row">
+  <% @question.answers.each do |answer| %>
+  <div class="col-md-3">
+    <h3><%= answer.author %></h3>
+    <p><em><%= answer.created_at.to_date.to_formatted_s(:long_ordinal) %></em></p>
+    <p><%= answer.content %></p>
+
+    <%= link_to "Delete", question_answer_path(@question, answer), :data => {confirm: "Are You Sure?", method: "delete"}, class: "btn btn-danger" %>
+    <br>
+    <br>
+  </div>
+  <% end %>
+</div>
